@@ -40,6 +40,7 @@ for i in range(len(CsvFile_2)):
     source_filename = os.path.join(outPath,CsvFile[i])
     source_file = pd.read_csv(source_filename,header = None)
     BASE_file = pd.read_csv(BASE_filename,header = None)
+    # 显然这里是需要一个BASE的CSV文件提供基础的表头等内容的。
     mg = pd.merge(BASE_file,source_file,how="left",on=[0]) #注意，所有数据必须类型相同，另外，根据某一个键值进行匹配的时候，不要忘记用on命令。
     print(mg)
     mg.to_csv(BASE_filename, index = False, encoding="utf-8", header = None)
